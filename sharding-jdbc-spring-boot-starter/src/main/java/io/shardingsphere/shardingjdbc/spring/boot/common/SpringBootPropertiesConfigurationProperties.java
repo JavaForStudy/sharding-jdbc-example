@@ -15,7 +15,7 @@
  * </p>
  */
 
-package io.shardingsphere.common;
+package io.shardingsphere.shardingjdbc.spring.boot.common;
 
 import lombok.Getter;
 import lombok.Setter;

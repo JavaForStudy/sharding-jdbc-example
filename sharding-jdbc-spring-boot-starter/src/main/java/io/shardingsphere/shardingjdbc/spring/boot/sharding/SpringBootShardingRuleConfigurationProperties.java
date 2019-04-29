@@ -15,16 +15,16 @@
  * </p>
  */
 
-package io.shardingsphere.masterslave;
+package io.shardingsphere.shardingjdbc.spring.boot.sharding;
 
-import io.shardingsphere.core.yaml.masterslave.YamlMasterSlaveRuleConfiguration;
+import io.shardingsphere.core.yaml.sharding.YamlShardingRuleConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * Master-slave rule configuration properties.
+ * Sharding rule configuration properties.
  *
  * @author caohao
  */
-@ConfigurationProperties(prefix = "sharding.jdbc.config.masterslave")
-public class SpringBootMasterSlaveRuleConfigurationProperties extends YamlMasterSlaveRuleConfiguration {
+@ConfigurationProperties(prefix = "sharding.jdbc.config.sharding")
+public class SpringBootShardingRuleConfigurationProperties extends YamlShardingRuleConfiguration {
 }

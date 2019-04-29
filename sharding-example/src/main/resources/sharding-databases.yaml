@@ -1,0 +1,36 @@
+dataSources:
+  ds0: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo_ds?useUnicode=true&characterEncoding=utf-8&rewriteBatchedStatements=true&useSSL=false
+    username: root
+    password: 12345678
+
+  ds1: !!com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo_ds?useUnicode=true&characterEncoding=utf-8&rewriteBatchedStatements=true&useSSL=false
+    username: root
+    password: 12345678
+
+shardingRule:
+  tables:
+    t_user:
+      ## 如果配置了主从，这里的ds_ms指向主从节点信息
+      actualDataNodes: ds_ms.t_user_20190$->{3..6}
+      tableStrategy:
+        standard:
+          shardingColumn: c_date
+          preciseAlgorithmClassName: io.shardingsphere.algorithm.SingleKeyDynamicDateForMonthTableShardingAlgorithm
+
+  bindingTables:
+    - t_user
+  defaultDataSourceName: ds0
+
+  masterSlaveRules:
+    ds_ms:
+      masterDataSourceName: ds0
+      slaveDataSourceNames:
+        - ds1
+      loadBalanceAlgorithmType: ROUND_ROBIN
+
+props:
+  sql.show: true

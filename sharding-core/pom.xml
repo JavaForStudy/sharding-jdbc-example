@@ -15,7 +15,13 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+
     </dependencies>
+
 
     <build>
         <finalName>sharding-core</finalName>

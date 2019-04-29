@@ -15,18 +15,18 @@
  * </p>
  */
 
-package io.shardingsphere;
+package io.shardingsphere.shardingjdbc.spring.boot;
 
 import com.google.common.base.Preconditions;
-import io.shardingsphere.common.SpringBootConfigMapConfigurationProperties;
-import io.shardingsphere.common.SpringBootPropertiesConfigurationProperties;
+import io.shardingsphere.shardingjdbc.spring.boot.common.SpringBootConfigMapConfigurationProperties;
+import io.shardingsphere.shardingjdbc.spring.boot.common.SpringBootPropertiesConfigurationProperties;
 import io.shardingsphere.core.exception.ShardingException;
-import io.shardingsphere.masterslave.SpringBootMasterSlaveRuleConfigurationProperties;
-import io.shardingsphere.sharding.SpringBootShardingRuleConfigurationProperties;
+import io.shardingsphere.shardingjdbc.spring.boot.masterslave.SpringBootMasterSlaveRuleConfigurationProperties;
+import io.shardingsphere.shardingjdbc.spring.boot.sharding.SpringBootShardingRuleConfigurationProperties;
 import io.shardingsphere.shardingjdbc.api.MasterSlaveDataSourceFactory;
 import io.shardingsphere.shardingjdbc.api.ShardingDataSourceFactory;
 import io.shardingsphere.shardingjdbc.util.DataSourceUtil;
-import io.shardingsphere.util.PropertyUtil;
+import io.shardingsphere.shardingjdbc.spring.boot.util.PropertyUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.EnvironmentAware;
@@ -51,17 +51,17 @@ import java.util.Map;
 })
 @RequiredArgsConstructor
 public class SpringBootConfiguration implements EnvironmentAware {
-    
+
     private final SpringBootShardingRuleConfigurationProperties shardingProperties;
-    
+
     private final SpringBootMasterSlaveRuleConfigurationProperties masterSlaveProperties;
-    
+
     private final SpringBootConfigMapConfigurationProperties configMapProperties;
-    
+
     private final SpringBootPropertiesConfigurationProperties propMapProperties;
-    
+
     private final Map<String, DataSource> dataSourceMap = new LinkedHashMap<>();
-    
+
     /**
      * Get data source bean.
      *
@@ -76,12 +76,12 @@ public class SpringBootConfiguration implements EnvironmentAware {
                 : MasterSlaveDataSourceFactory.createDataSource(
                         dataSourceMap, masterSlaveProperties.getMasterSlaveRuleConfiguration(), configMapProperties.getConfigMap(), propMapProperties.getProps());
     }
-    
+
     @Override
     public final void setEnvironment(final Environment environment) {
         setDataSourceMap(environment);
     }
-    
+
     @SuppressWarnings("unchecked")
     private void setDataSourceMap(final Environment environment) {
         String prefix = "sharding.jdbc.datasource.";

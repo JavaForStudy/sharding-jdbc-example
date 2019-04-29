@@ -15,7 +15,7 @@
  * </p>
  */
 
-package io.shardingsphere.util;
+package io.shardingsphere.shardingjdbc.spring.boot.util;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

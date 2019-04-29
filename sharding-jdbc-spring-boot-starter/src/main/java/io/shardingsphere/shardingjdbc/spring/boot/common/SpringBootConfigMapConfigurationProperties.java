@@ -15,16 +15,24 @@
  * </p>
  */
 
-package io.shardingsphere.sharding;
+package io.shardingsphere.shardingjdbc.spring.boot.common;
 
-import io.shardingsphere.core.yaml.sharding.YamlShardingRuleConfiguration;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 /**
- * Sharding rule configuration properties.
+ * Config map configuration properties.
  *
- * @author caohao
+ * @author zhangliang
  */
-@ConfigurationProperties(prefix = "sharding.jdbc.config.sharding")
-public class SpringBootShardingRuleConfigurationProperties extends YamlShardingRuleConfiguration {
+@ConfigurationProperties(prefix = "sharding.jdbc.config")
+@Getter
+@Setter
+public class SpringBootConfigMapConfigurationProperties {
+    
+    private Map<String, Object> configMap = new LinkedHashMap<>();
 }

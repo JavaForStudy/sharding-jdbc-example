@@ -15,24 +15,16 @@
  * </p>
  */
 
-package io.shardingsphere.common;
+package io.shardingsphere.shardingjdbc.spring.boot.masterslave;
 
-import lombok.Getter;
-import lombok.Setter;
+import io.shardingsphere.core.yaml.masterslave.YamlMasterSlaveRuleConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 /**
- * Config map configuration properties.
+ * Master-slave rule configuration properties.
  *
- * @author zhangliang
+ * @author caohao
  */
-@ConfigurationProperties(prefix = "sharding.jdbc.config")
-@Getter
-@Setter
-public class SpringBootConfigMapConfigurationProperties {
-    
-    private Map<String, Object> configMap = new LinkedHashMap<>();
+@ConfigurationProperties(prefix = "sharding.jdbc.config.masterslave")
+public class SpringBootMasterSlaveRuleConfigurationProperties extends YamlMasterSlaveRuleConfiguration {
 }
