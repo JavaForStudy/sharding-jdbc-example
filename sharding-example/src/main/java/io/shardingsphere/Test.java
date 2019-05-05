@@ -30,7 +30,7 @@ public class Test {
     }
     private static String loadFromResource() throws Exception{
         BufferedReader reader = new BufferedReader(new InputStreamReader(Class.class
-                .getResourceAsStream("/" + "sharding-databases.yaml"), StandardCharsets.UTF_8));
+                .getResourceAsStream("/" + "sharding.yaml"), StandardCharsets.UTF_8));
         StringBuffer sb = new StringBuffer();
         CharBuffer charBuffer = CharBuffer.allocate(1024);
         for (int count = reader.read(charBuffer); count > 0; count = reader.read(charBuffer)) {
@@ -38,4 +38,7 @@ public class Test {
         }
         return sb.toString();
     }
+
+
+
 }
